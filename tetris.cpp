@@ -123,7 +123,6 @@ public:
                             00000};
 
     int tetrominoSTet2[5] ={00000,
-                            00110,
                             01100,
                             00000,
                             00000};
@@ -149,9 +148,7 @@ public:
 
     int tetrominoTTet2[5] ={00000,
                             00100,
-                            00110,
-                            00100,
-                            00000};
+							};
 
     int tetrominoTTet3[5] ={00000,
                             00000,
@@ -299,14 +296,16 @@ int GameLoop()
 }
 }
 
-int GameMovement(int a, int b)
+int GameMovement(int width_x, int height_y)
 {
 	int aa;
 	int bb;
 	int y;
 	int x;
-	aa = y;
-	bb = x;
+	height_y = y;
+	width_x = x;
+	printw("%d", height_y);
+	printw("%d", width_x);
     clear();
 	mvprintw(y, x, "o");
 	mvprintw(y+1, x, "o");
@@ -345,6 +344,12 @@ int main(int argc, char **argv)
 // }
 //
 // endwin();
+ initscr();
+ cbreak();
+ noecho();
+ scrollok(stdscr, TRUE);
+ nodelay(stdscr, TRUE);
+ keypad(stdscr, TRUE);
 
  int x = 0, y = 0;
  int max_y = 0, max_x = 0;
@@ -354,8 +359,6 @@ int main(int argc, char **argv)
  int xx = 0;
  int yy = 0;
 
- initscr();
- noecho();
  curs_set(FALSE);
 	GameMovement(10, 10);
  // Global var `stdscr` is created by the call to `initscr()`
@@ -368,43 +371,50 @@ int mov=getch();
 	switch(mov)
 
 	{
-		case 'h':
-			x = x - 1;
-//			clear();
-//			mvprintw(y, x, "o");
-//			mvprintw(y+1, x, "o");
-//			mvprintw(y+2, x, "o");
-//			mvprintw(y+3, x, "o");
-//			refresh();
-			GameMovement(y, x);
-			break;
-		case 'l':
-			x = x + 1;
-//			clear();
-//			mvprintw(y, x, "o");
-//			mvprintw(y+1, x, "o");
-//			mvprintw(y+2, x, "o");
-//			mvprintw(y+3, x, "o");
-//			refresh();
-//			 
-			break;
-		case 'k':
-			y = y - 1;
-//			clear();
-//			mvprintw(y, x, "o");
-//			mvprintw(y+1, x, "o");
-//			mvprintw(y+2, x, "o");
-//			mvprintw(y+3, x, "o");
-//			refresh();
-			break;
-		case 'j':
-			y = y + 1;
-//			clear();
-//			mvprintw(y, x, "o");
-//			mvprintw(y+1, x, "o");
-//			mvprintw(y+2, x, "o");
-//			mvprintw(y+3, x, "o");
-//			refresh();
+//		case 'h':
+		case KEY_LEFT:
+  		x = x - 1;
+			clear();
+			mvprintw(y, x, "o");
+			mvprintw(y+1, x, "o");
+			mvprintw(y+2, x, "o");
+			mvprintw(y+3, x, "o");
+			refresh();
+//			GameMovement(y, x);
+  		break;
+		case KEY_RIGHT:
+  //	case 'l':
+  		x = x + 1;
+			clear();
+			mvprintw(y, x, "o");
+			mvprintw(y+1, x, "o");
+			mvprintw(y+2, x, "o");
+			mvprintw(y+3, x, "o");
+			refresh();
+//			GameMovement(y, x); 
+  		break;
+		case KEY_UP:
+  //	case 'k':
+  		y = y - 1;
+			clear();
+			mvprintw(y, x, "o");
+			mvprintw(y+1, x, "o");
+			mvprintw(y+2, x, "o");
+			mvprintw(y+3, x, "o");
+			refresh();
+//			GameMovement(y, x);
+  		break;
+		case KEY_DOWN:
+//  	case 'j':
+  		y = y + 1;
+			clear();
+			mvprintw(y, x, "o");
+			mvprintw(y+1, x, "o");
+			mvprintw(y+2, x, "o");
+			mvprintw(y+3, x, "o");
+			refresh();
+//			//
+	//		GameMovement(y, x);
 			break;
 		case 'q':
 			printw("Goodbye!");
@@ -421,8 +431,8 @@ int mov=getch();
 // }
  }
 
- endwin();
-
+endwin();
+curs_set(true);
 
 
 
