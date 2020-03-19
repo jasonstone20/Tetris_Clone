@@ -296,54 +296,19 @@ int GameLoop()
 }
 }
 
-int GameMovement(int width_x, int height_y)
+int GameMovement()
 {
-	int aa;
-	int bb;
-	int y;
-	int x;
-	height_y = y;
-	width_x = x;
-	printw("%d", height_y);
-	printw("%d", width_x);
-    clear();
-	mvprintw(y, x, "o");
-	mvprintw(y+1, x, "o");
-	mvprintw(y+2, x, "o");
-	mvprintw(y+3, x, "o");
-	refresh();
-
-
-
-// usleep(500);
-
-	
-}
-
-
-
-
-int main(int argc, char **argv)
-{
-
-//	GameLoop();
-//int x = 0, y = 0;
-
-// initscr();
-// noecho();
-// curs_set(FALSE);
-//
-// while(1) {
-// clear(); // Clear the screen of all
-// // previously-printed characters
-// mvprintw(y, x, "o"); // Print our "ball" at the current xy position
-// refresh();
-//
-// usleep(50000); // Shorter delay between movements
-// x++; // Advance the ball to the right
-// }
-//
-// endwin();
+//	int y,x;
+//	printw("%d", height_y);
+//	printw("%d", width_x);
+//	height_y = y;
+//	width_x = x;
+//    clear();
+//	mvprintw(y, x, "o");
+//	mvprintw(y+1, x, "o");
+//	mvprintw(y+2, x, "o");
+//	mvprintw(y+3, x, "o");
+//    refresh();
  initscr();
  cbreak();
  noecho();
@@ -360,7 +325,7 @@ int main(int argc, char **argv)
  int yy = 0;
 
  curs_set(FALSE);
-	GameMovement(10, 10);
+//	GameMovement(10, 10);
  // Global var `stdscr` is created by the call to `initscr()`
  getmaxyx(stdscr, max_y, max_x);
 
@@ -413,8 +378,8 @@ int mov=getch();
 			mvprintw(y+2, x, "o");
 			mvprintw(y+3, x, "o");
 			refresh();
-//			//
-	//		GameMovement(y, x);
+			//
+ //   		GameMovement(y, x);
 			break;
 		case 'q':
 			printw("Goodbye!");
@@ -436,5 +401,36 @@ curs_set(true);
 
 
 
+// usleep(500);
+
+	
+}
+
+
+
+
+int main(int argc, char **argv)
+{
+
+//	GameLoop();
+//int x = 0, y = 0;
+
+// initscr();
+// noecho();
+// curs_set(FALSE);
+//
+// while(1) {
+// clear(); // Clear the screen of all
+// // previously-printed characters
+// mvprintw(y, x, "o"); // Print our "ball" at the current xy position
+// refresh();
+//
+// usleep(50000); // Shorter delay between movements
+// x++; // Advance the ball to the right
+// }
+//
+// endwin();
+
+GameMovement();
 
 };
