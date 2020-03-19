@@ -25,7 +25,7 @@
 //			00100
 //			00100);
 //}
-
+int GameMovement(int a, int b, int c, int d, int e, int f, int g, int h);
 class Tetrominos
 {
 public:
@@ -265,47 +265,69 @@ int GameLoop()
 {
 
 
- initscr();
- cbreak();
- noecho();
- scrollok(stdscr, TRUE);
- nodelay(stdscr, TRUE);
- while (true) 
- {
- 	
- 	if (getch() == 'q')
- 	{
- 		printw("Goodbye!\n");
- 		return 0;
- 	}
- 	napms(500);
-	for (int y = 0; y < 10; y++)
+	initscr();
+	cbreak();
+	noecho();
+	scrollok(stdscr, TRUE);
+	nodelay(stdscr, TRUE);
+	while (true) 
 	{
-		for (int x = 0; y < 10; x++)
+ 	
+		if (getch() == 'q')
 		{
-		clear();
-		mvprintw(y, x, "00100\n"); 
-		mvprintw(y, x, "00100\n");
-		mvprintw(y, x, "00100\n");
-		mvprintw(y, x, "00100\n");
-		mvprintw(y, x, "00000\n");
-		refresh();
-	}	
- 	endwin();
- }
+			printw("Goodbye!\n");
+			return 0;
+		}
+		napms(500);
+		for (int y = 0; y < 10; y++)
+		{
+			for (int x = 0; y < 10; x++)
+			{
+				clear();
+				mvprintw(y, x, "00100\n"); 
+				mvprintw(y, x, "00100\n");
+				mvprintw(y, x, "00100\n");
+				mvprintw(y, x, "00100\n");
+				mvprintw(y, x, "00000\n");
+				refresh();
+			}	
+		endwin();
+		}
+	}
 }
+int GamePieces()
+{
+	int a, b, c, d, e, f, g, h;
+	a = 0;
+	b = 0;
+	c = 1;
+	d = 0;
+	e = 2;
+	f = 0;
+	g = 3;
+	h = 0;
+	return (a, b, c, d, e, f, g, h);
 }
 
-int GameMovement()
+int GameMovement(int a, int b, int c, int d, int e, int f, int g, int h)
 {
 //	int y,x;
 //	printw("%d", height_y);
+	
 //	printw("%d", width_x);
 //	height_y = y;
+	
 //	width_x = x;
+	
+
 //    clear();
+	
 //	mvprintw(y, x, "o");
+//
+//
+//
 //	mvprintw(y+1, x, "o");
+	
 //	mvprintw(y+2, x, "o");
 //	mvprintw(y+3, x, "o");
 //    refresh();
@@ -340,46 +362,63 @@ int mov=getch();
 		case KEY_LEFT:
   		x = x - 1;
 			clear();
-			mvprintw(y, x, "o");
-			mvprintw(y+1, x, "o");
-			mvprintw(y+2, x, "o");
-			mvprintw(y+3, x, "o");
+			mvprintw(y+a, x+b, "o");
+			mvprintw(y+c, x+d, "o");
+			mvprintw(y+e, x+f, "o");
+			mvprintw(y+g, x+h, "o");
 			refresh();
-//			GameMovement(y, x);
   		break;
 		case KEY_RIGHT:
   //	case 'l':
   		x = x + 1;
 			clear();
-			mvprintw(y, x, "o");
-			mvprintw(y+1, x, "o");
-			mvprintw(y+2, x, "o");
-			mvprintw(y+3, x, "o");
+			mvprintw(y+a, x+b, "o");
+			mvprintw(y+c, x+d, "o");
+			mvprintw(y+e, x+f, "o");
+			mvprintw(y+g, x+h, "o");
 			refresh();
-//			GameMovement(y, x); 
+		//	clear();
+		//	mvprintw(y, x, "o");
+		//	mvprintw(y+1, x, "o");
+		//	mvprintw(y+2, x, "o");
+		//	mvprintw(y+3, x, "o");
+		//	refresh();
   		break;
 		case KEY_UP:
   //	case 'k':
   		y = y - 1;
 			clear();
-			mvprintw(y, x, "o");
-			mvprintw(y+1, x, "o");
-			mvprintw(y+2, x, "o");
-			mvprintw(y+3, x, "o");
+			mvprintw(y+a, x+b, "o");
+			mvprintw(y+c, x+d, "o");
+			mvprintw(y+e, x+f, "o");
+			mvprintw(y+g, x+h, "o");
 			refresh();
-//			GameMovement(y, x);
+		//	clear();
+		//	mvprintw(y, x, "o");
+		//	mvprintw(y+1, x, "o");
+		//	mvprintw(y+2, x, "o");
+		//	mvprintw(y+3, x, "o");
+		//	refresh();
   		break;
 		case KEY_DOWN:
 //  	case 'j':
   		y = y + 1;
 			clear();
-			mvprintw(y, x, "o");
-			mvprintw(y+1, x, "o");
-			mvprintw(y+2, x, "o");
-			mvprintw(y+3, x, "o");
+			mvprintw(y+a, x+b, "o");
+			mvprintw(y+c, x+d, "o");
+			mvprintw(y+e, x+f, "o");
+			mvprintw(y+g, x+h, "o");
 			refresh();
+
+
+
+		//	clear();
+		//	mvprintw(y, x, "o");
+		//	mvprintw(y+1, x, "o");
+		//	mvprintw(y+2, x, "o");
+		//	mvprintw(y+3, x, "o");
+		//	refresh();
 			//
- //   		GameMovement(y, x);
 			break;
 		case 'q':
 			printw("Goodbye!");
@@ -431,6 +470,6 @@ int main(int argc, char **argv)
 //
 // endwin();
 
-GameMovement();
+GameMovement(0, 1, 1, 0, 2, 0, 3, 0);
 
 };
