@@ -24,7 +24,7 @@
 //			00100
 //			00100
 //			00100);
-//}
+
 int GameMovement(int a, int b, int c, int d, int e, int f, int g, int h);
 class Tetrominos
 {
@@ -295,18 +295,16 @@ int GameLoop()
 		}
 	}
 }
-int GamePieces()
+int GamePiecesLine1()
 {
-	int a, b, c, d, e, f, g, h;
-	a = 0;
-	b = 0;
-	c = 1;
-	d = 0;
-	e = 2;
-	f = 0;
-	g = 3;
-	h = 0;
-	return (a, b, c, d, e, f, g, h);
+	GameMovement(	0,0,
+					1,0,
+					2,0,
+					3,0);	
+}
+int GamePiecesLine2()
+{
+	GameMovement(	0, 0, 0, 1, 0, 2, 0, 3);
 }
 
 int GameMovement(int a, int b, int c, int d, int e, int f, int g, int h)
@@ -334,9 +332,9 @@ int GameMovement(int a, int b, int c, int d, int e, int f, int g, int h)
  initscr();
  cbreak();
  noecho();
- scrollok(stdscr, TRUE);
- nodelay(stdscr, TRUE);
- keypad(stdscr, TRUE);
+ scrollok(stdscr, true);
+ nodelay(stdscr, true);
+ keypad(stdscr, true);
 
  int x = 0, y = 0;
  int max_y = 0, max_x = 0;
@@ -420,6 +418,30 @@ int mov=getch();
 		//	refresh();
 			//
 			break;
+		case 'b':
+			if (h == 0)
+			{
+			a = 0;
+			b = 0;
+			c = 0;
+			d = 1;
+			e = 0;
+			f = 2;
+			g = 0;
+			h = 3;
+			}
+			else if (h == 3)
+			{
+			a = 0;
+			b = 0;
+			c = 1;
+			d = 0;
+			e = 2;
+			f = 0;
+			g = 3;
+			h = 0;
+			}
+		break;
 		case 'q':
 			printw("Goodbye!");
 			return 0;
@@ -436,7 +458,7 @@ int mov=getch();
  }
 
 endwin();
-curs_set(true);
+curs_set(1);
 
 
 
@@ -445,7 +467,45 @@ curs_set(true);
 	
 }
 
+int PieceRotate()
+{
+ initscr();
+ cbreak();
+ noecho();
+ scrollok(stdscr, true);
+ nodelay(stdscr, true);
+ keypad(stdscr, true);
 
+bool flip;	
+//flip = 1;
+
+	while (1)	
+
+		{
+			int rotate=getch();	
+			switch(rotate)
+			{
+				case 'b':
+				GamePiecesLine1(); 	
+			break;	
+				case 'c':
+				GamePiecesLine2();
+			break;
+			}
+		}
+
+
+
+}
+
+void PassArray(int test[4]) 
+{
+	for (int i = 0; i < 4; i++)
+	{
+		mvprintw(5+test[i], i+test[i], "x");
+		refresh();
+	}
+}
 
 
 int main(int argc, char **argv)
@@ -469,7 +529,18 @@ int main(int argc, char **argv)
 // }
 //
 // endwin();
-
-GameMovement(0, 1, 1, 0, 2, 0, 3, 0);
-
+//GamePiecesLine1();
+//GameMovement();
+initscr();
+cbreak();
+noecho();
+scrollok(stdscr, true);
+nodelay(stdscr, true);
+keypad(stdscr, true);
+endwin();
+int arr[4] = {
+1,2,3,4
+};
+PassArray(arr);
+curs_set(1);
 };
